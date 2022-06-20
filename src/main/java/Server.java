@@ -10,10 +10,11 @@ public class Server {
     public static final int PORT = 8080;
 
     public static void main(String[] args) {
-        try (ServerSocket serverSocket = new ServerSocket(PORT)) {
-            Socket clientSocket = serverSocket.accept();
-            PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
-            BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+        try (ServerSocket serverSocket = new ServerSocket(PORT);
+             Socket clientSocket = serverSocket.accept();
+             PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
+             BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()))) {
+
 
             System.out.println("New connection accepted");
             String input = in.readLine();
